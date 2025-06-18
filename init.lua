@@ -98,6 +98,11 @@ vim.g.have_nerd_font = true
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
+vim.o.foldmethod = 'expr'
+vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.o.foldlevel = 99
+vim.o.foldenable = true
+
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 vim.o.expandtab = true
