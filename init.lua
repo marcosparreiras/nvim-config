@@ -509,6 +509,14 @@ require('lazy').setup({
       'saghen/blink.cmp',
     },
     config = function()
+      vim.api.nvim_set_hl(0, 'FloatBorder', { fg = '#ffffff' })
+      local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+      function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+        opts = opts or {}
+        opts.border = opts.border or 'rounded'
+        return orig_util_open_floating_preview(contents, syntax, opts, ...)
+      end
+
       -- Brief aside: **What is LSP?**
       --
       -- LSP is an initialism you've probably heard, but might not understand what it is.
