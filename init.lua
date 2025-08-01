@@ -1,5 +1,4 @@
 --[[
-
 =====================================================================
 ==================== READ THIS BEFORE CONTINUING ====================
 =====================================================================
@@ -914,23 +913,35 @@ require('lazy').setup({
     -- change the command in the config to whatever the name of that colorscheme is.
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
     --
-    'projekt0n/github-nvim-theme',
+    'folke/tokyonight.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     config = function()
-      require('github-theme').setup {
+      require('tokyonight').setup {
+        transparent = true,
+        terminal_colors = true,
         styles = {
           comments = { italic = false }, -- Disable italics in comments
         },
+        on_highlights = function(hl, _)
+          -- Telescope
+          hl.TelescopeNormal = { bg = 'none' }
+          hl.TelescopeBorder = { bg = 'none' }
+          hl.TelescopePromptNormal = { bg = 'none' }
+          hl.TelescopePromptBorder = { bg = 'none' }
+          hl.TelescopePromptTitle = { bg = 'none' }
+          hl.TelescopePreviewTitle = { bg = 'none' }
+          hl.TelescopeResultsTitle = { bg = 'none' }
+          -- Neo-tree
+          hl.NeoTreeNormal = { bg = 'none' }
+          hl.NeoTreeNormalNC = { bg = 'none' }
+          hl.NeoTreeEndOfBuffer = { bg = 'none' }
+          -- Floats
+          hl.NormalFloat = { bg = 'none' }
+          hl.FloatBorder = { bg = 'none' }
+        end,
       }
-
       -- Load the colorscheme here.
-      vim.cmd 'colorscheme github_dark_colorblind'
-      -- Remove background
-      vim.cmd [[
-        highlight Normal guibg=NONE ctermbg=NONE
-        highlight NormalNC guibg=NONE ctermbg=NONE
-        highlight EndOfBuffer guibg=NONE ctermbg=NONE
-      ]]
+      vim.cmd 'colorscheme tokyonight-storm'
     end,
   },
 
